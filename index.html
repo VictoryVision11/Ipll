@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPL Pro Board</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+body{
+background:#0a0c2d;
+color:white;
+overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+padding:15px 30px;
+background:#0f1361;
+box-shadow:0 0 10px rgba(0,255,255,0.3);
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#00f7ff;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:80px 20px;
+background:linear-gradient(45deg,#000,#1a1f70);
+}
+
+.hero h1{
+font-size:45px;
+margin-bottom:10px;
+}
+
+.hero button{
+padding:12px 30px;
+background:#00f7ff;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+/* LIVE MATCH SECTION */
+.matches{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+padding:30px;
+}
+
+.card{
+background:#14165c;
+padding:20px;
+border-radius:15px;
+text-align:center;
+transition:0.4s;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px #00f7ff;
+}
+
+/* LIVE BADGE */
+.live{
+color:red;
+font-weight:bold;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1;}
+50%{opacity:0.3;}
+100%{opacity:1;}
+}
+
+/* WINNING POPUP */
+.popup{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#00f7ff;
+color:black;
+padding:10px 20px;
+border-radius:10px;
+display:none;
+animation:slide 0.5s ease;
+}
+
+@keyframes slide{
+from{transform:translateX(-100px);}
+to{transform:translateX(0);}
+}
+
+/* TELEGRAM BUTTON */
+.telegram{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#0088cc;
+padding:15px;
+border-radius:50%;
+cursor:pointer;
+box-shadow:0 0 15px #0088cc;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+background:#0f1361;
+margin-top:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div class="logo">🏏 IPL PRO</div>
+</header>
+
+<section class="hero">
+<h1>IPL LIVE PREDICTION HUB</h1>
+<p>Win Big Daily 💰</p>
+<button onclick="joinNow()">JOIN VIP</button>
+</section>
+
+<section class="matches">
+
+<div class="card">
+<h3>MI vs CSK</h3>
+<p class="live">LIVE 🔴</p>
+<p id="score">145/3 (16.2)</p>
+</div>
+
+<div class="card">
+<h3>RCB vs KKR</h3>
+<p>Starts 7:30 PM</p>
+</div>
+
+<div class="card">
+<h3>GT vs RR</h3>
+<p>Tomorrow</p>
+</div>
+
+</section>
+
+<div class="popup" id="popup"></div>
+
+<div class="telegram" onclick="joinNow()">📩</div>
+
+<footer>
+<p>© IPL Pro Board 2026</p>
+</footer>
+
+<script>
+
+// FAKE LIVE SCORE CHANGE
+setInterval(()=>{
+let runs = Math.floor(Math.random()*200);
+let wickets = Math.floor(Math.random()*10);
+document.getElementById("score").innerText = runs+"/"+wickets+" (Live)";
+},3000);
+
+// WINNING POPUP
+let users = ["Rahul","Amit","Vikash","Suresh","Rohit","Neha"];
+
+setInterval(()=>{
+let name = users[Math.floor(Math.random()*users.length)];
+let amount = Math.floor(Math.random()*5000)+500;
+
+let popup = document.getElementById("popup");
+popup.innerText = name+" won ₹"+amount;
+popup.style.display="block";
+
+setTimeout(()=>{popup.style.display="none";},3000);
+
+},5000);
+
+// TELEGRAM JOIN
+function joinNow(){
+window.location.href="https://t.me/yourchannel";
+}
+
+</script>
+
+</body>
+</html>
